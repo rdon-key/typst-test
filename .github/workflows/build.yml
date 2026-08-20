@@ -1,0 +1,26 @@
+name: Build Typst Book
+ on:
+   push:
+   pull_request:
+   workflow_dispatch:
+ jobs:
+   build:
+ runs-on: ubuntu-latest
+
+ steps:
+   - name: Checkout
+     uses: actions/checkout@v4
+
+   - name: Setup Typst
+     uses: typst-community/setup-typst@v4
+
+   - name: Build PDF
+     run: |
+       mkdir -p dist
+       typst compile book/main.typ dist/book.pdf
+
+   - name: Upload PDF
+     uses: actions/upload-artifact@v4
+     with:
+       name: typst-book
+       path: dist/book.pdf
