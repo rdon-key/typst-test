@@ -4,7 +4,8 @@
  )
  #set text(
    lang: "ja",
-   size: 10pt,
+  font: "Noto Serif CJK JP",
+  size: 10pt,
  )
  #set heading(numbering: "1.")
  = Typst Test Book
